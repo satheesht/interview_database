@@ -1,0 +1,148 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #3bbfce; }
+  body .content-navigation {
+    border-color: #3bbfce;
+    color: #2ca2af; }
+  body .border {
+    padding: 8px;
+    margin: 8px;
+    border-color: #3bbfce; }
+  body input[type=submit], body input[type=button] {
+    background: #4B99AD;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff; }
+  body input[type=submit]:hover, body input[type=button]:hover {
+    background: #4691A4;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none; }
+  body .container {
+    position: relative;
+    background-color: #fff;
+    width: 50%;
+    margin: 0 auto;
+    height: 100%;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px -1px 5px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px -1px 5px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px -1px 5px -1px rgba(0, 0, 0, 0.75);
+    padding: 50px 10px 10px 10px; }
+    body .container .no_records {
+      color: red;
+      margin: 0 auto;
+      text-align: center; }
+    body .container .menu {
+      background-color: #ffe8b5;
+      position: absolute;
+      top: 0;
+      text-align: center;
+      width: 100%;
+      left: 0px;
+      display: block;
+      padding: 0;
+      margin: 0; }
+      body .container .menu li {
+        display: inline-block;
+        width: 46%;
+        padding: 10px;
+        text-decoration: underline; }
+    body .container h2 {
+      text-align: center; }
+    body .container .form-style {
+      border-radius: 8px;
+      margin: 10px auto;
+      max-width: 600px;
+      padding: 20px 12px 10px 20px;
+      font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif; }
+      body .container .form-style li {
+        padding: 0;
+        display: block;
+        list-style: none; }
+      body .container .form-style label {
+        margin: 0 0 3px 0;
+        padding: 0px;
+        display: block;
+        font-weight: bold; }
+      body .container .form-style .error-message {
+        color: #e00a0a;
+        font-weight: lighter;
+        float: right;
+        font-size: 12px; }
+      body .container .form-style input[type=text],
+      body .container .form-style input[type=date],
+      body .container .form-style input[type=datetime],
+      body .container .form-style input[type=number],
+      body .container .form-style input[type=search],
+      body .container .form-style input[type=time],
+      body .container .form-style input[type=url],
+      body .container .form-style input[type=email],
+      body .container .form-style textarea,
+      body .container .form-style select {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        border: 1px solid #BEBEBE;
+        padding: 7px;
+        margin: 0px;
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none; }
+      body .container .form-style input[type=text]:focus,
+      body .container .form-style input[type=date]:focus,
+      body .container .form-style input[type=datetime]:focus,
+      body .container .form-style input[type=number]:focus,
+      body .container .form-style input[type=search]:focus,
+      body .container .form-style input[type=time]:focus,
+      body .container .form-style input[type=url]:focus,
+      body .container .form-style input[type=email]:focus,
+      body .container .form-style textarea:focus,
+      body .container .form-style select:focus {
+        -moz-box-shadow: 0 0 8px #88D5E9;
+        -webkit-box-shadow: 0 0 8px #88D5E9;
+        box-shadow: 0 0 8px #88D5E9;
+        border: 1px solid #88D5E9; }
+      body .container .form-style .field-divided {
+        width: 49%; }
+      body .container .form-style .field-long {
+        width: 100%; }
+      body .container .form-style .field-select {
+        width: 100%; }
+      body .container .form-style .field-textarea {
+        height: 100px; }
+      body .container .form-style .required {
+        color: #e00a0a; }
+    body .container .list.head {
+      font-size: 18px;
+      background-color: #f3f3f3;
+      color: #4a4a4a; }
+    body .container .list {
+      border: 1px solid #dedede;
+      border-radius: 5px;
+      padding: 10px;
+      display: block; }
+      body .container .list li {
+        display: inline-block;
+        width: 107px;
+        text-align: left; }
+        body .container .list li label {
+          display: inline; }
+        body .container .list li span {
+          display: inline; }
+        body .container .list li span.button {
+          color: white;
+          border-radius: 3px;
+          padding: 3px;
+          font-weight: bold; }
+        body .container .list li .visa {
+          background-color: blue; }
+        body .container .list li .residence {
+          background-color: green; }
+      body .container .list .sub_container {
+        width: 400px; }
+        body .container .list .sub_container label, body .container .list .sub_container span {
+          width: 180px;
+          display: inline-block; }

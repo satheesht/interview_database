@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html >
+    <head>
+            <link rel="stylesheet" type="text/css" href="build/css/style.css">
+            <link rel="stylesheet" type="text/css" href="build/css/pikaday.css">
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">     
+    </head>
+    <body  ng-app="tq_database" ng-controller="tq_db_controller" ng-cloak>
+        <div ng-view></div>
+
+        <!--  Page 1 -->
+        <script type = "text/ng-template" id = "page_1.html"> 
+            <div class="container">
+                <menu></menu>
+                <h2>Interview Database Entry</h2>
+                <ul class="form-style">
+                    <li>
+                        <label class="field-label">Interview purpose <span class="required">*</span></label>
+                        <select  ng-model="form_fields.val_purpose" class="field-select">
+                            <option value="">-- select --</option>
+                            <option value="Visa">Visa</option>
+                            <option value="Permanent residence">Permanent residence</option>
+                        </select>
+                        <label class="error-message" ng-show="!form_fields.val_purpose && error_on">* This field is required</label>
+                    </li>
+                    <li>
+                        <label class="field-label">City <span class="required">*</span></label>
+                        <select  ng-model="form_fields.val_city" class="field-select">
+                            <option ng-repeat="city in cities" value="{{city}}">{{city || '-- select --'}}</option>
+                        </select>
+                        <label class="error-message" ng-show="!form_fields.val_city && error_on">* This field is required</label>
+                    </li>
+                    <li>
+                            <label class="field-label">Address <span class="required">*</span></label>
+                            <textarea name="field5" ng-model="form_fields.val_address" id="field5" class="field-long field-textarea"></textarea>
+                            <label class="error-message" ng-show="!form_fields.val_address && error_on">* This field is required</label>
+                    </li>
+                    
+                    <li>
+                        <label class="field-label">Interviewer <span class="required">*</span></label>
+                        <input type="text" ng-model="form_fields.val_interviewer_fn"  class="field-divided"  />
+                        <input type="text" ng-model="form_fields.val_interviewer_ln"  class="field-divided"  />
+                        <label class="error-message" ng-show="!(form_fields.val_interviewer_fn && form_fields.val_interviewer_ln) && error_on">* This field is required</label>
+                    </li>
+                    <li>
+                        <label class="field-label">Interviewee <span class="required">*</span></label>
+                        <input type="text" ng-model="form_fields.val_interviewee_fn"  class="field-divided"  />
+                        <input type="text" ng-model="form_fields.val_interviewee_ln"  class="field-divided"  />
+                        <label class="error-message" ng-show="!(form_fields.val_interviewee_fn && form_fields.val_interviewee_ln) && error_on">* This field is required</label>
+                    </li>
+                    <li>
+                            <label class="field-label">Interviewee's email <span class="required">*</span></label><input type="text" ng-model="form_fields.val_interviewee_email"  class="field-long"  />
+                            <label class="error-message" ng-show="!form_fields.val_interviewee_email && error_on">* This field is required</label>
+                            <label class="error-message" ng-show="form_fields.val_interviewee_email && invalid_email && error_on">* Invalid email address.</label>
+                    </li>
+                 
+                    <li>
+                        <label class="field-label">Interviewee's phone number <span class="required">*</span></label>
+                        <input type="text" ng-model="form_fields.val_interviewee_phone"  placeholder="XXX-XXX-XXXX" class="field-long" />
+                        <label class="error-message" ng-show="!form_fields.val_interviewee_phone && error_on">* This field is required</label>
+                        <label class="error-message" ng-show="form_fields.val_interviewee_phone && invalid_phone && error_on">* Invalid phone number.</label>
+                    </li>
+                    <li>
+                        <label class="field-label">Date <span class="required">*</span></label>
+                        <input type="text"  id="datepicker" ng-model="form_fields.val_date" class="field-long" />
+                        <label class="error-message" ng-show="!form_fields.val_date && error_on">* This field is required</label>
+                    </li>
+                    <li>
+                        <label class="field-label">Unique interview ID <span class="required">*</span></label>
+                        <input type="text"  readonly="true" ng-model="form_fields.val_interview_id" class="field-divided" /> &nbsp;<input type="button" ng-click="generateID()" value="Generate ID" />
+                        <label class="error-message" ng-show="!form_fields.val_interview_id && error_on">* This field is required</label>
+                    </li>
+                    
+                    <li>
+                        <input type="button" ng-click="submit_ta_records()" value="Submit" />
+                    </li>
+                </ul>
+            </form>
+        </script> <!-- Page 1 ends -->
+
+        <!--  Page 2 -->
+        <script type = "text/ng-template" id = "page_2.html">
+            <div class="container" ng-init="show_list()">
+                <menu></menu>
+                <h2>Scheduled Interviews</h2>
+                <div class="form-style">
+                    <ul class="list head">
+                        <li>Interview ID</li>
+                        <li>Purpose</li>
+                        <li>Interviewee</li>
+                        <li>Date</li>
+                    </ul>
+                    <h4 class="no_records" ng-show="interviews===null || interviews.length<1">(No records found)</h4>
+                    <interview ng-repeat="interview in interviews"></interview>
+                </div>
+
+                <!-- to clear all records with confirm box -->
+                <input type="button" onClick="if(confirm('Are you sure?'))localStorage.clear()" value="Delete All" />
+            </div>
+        </script>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+        <script type="text/javascript" src="build/js/app.js"></script>  
+        <script>
+            /*
+            | Timeout was required because the ng-view loads after this script so it delays a bit (200ms).
+            */
+            setTimeout(function(){
+                var picker = new Pikaday(
+                {
+                    field: document.getElementById('datepicker'),
+                    firstDay: 1,
+                    minDate: new Date(),
+                    maxDate: new Date(2020, 12, 31),
+                    yearRange: [2000,2020]
+                });
+            },200);     
+        </script>
+        
+        
+    </body>
+</html>
