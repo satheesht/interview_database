@@ -1,0 +1,15 @@
+
+<ul class="list" >
+    <li>{{interview.val_interview_id}}</li>
+    <li title="{{interview.val_purpose}}" ><span ng-class="{visa:interview.val_purpose=='Visa',residence:interview.val_purpose=='Permanent residence'}" class="button" >{{interview.val_purpose=="Visa"?interview.val_purpose:"PR"}}</span></li>
+    <li>{{interview.val_interviewee_fn | shorten:interview.val_interviewee_fn:interview.val_interviewee_ln}}</li>
+    <li>{{interview.val_date}}</li>
+    <li><input type="button" value="View Details" ng-click="show_details(interview.val_interview_id)" /></li>
+    <li ng-show="(current_show===interview.val_interview_id)" class="sub_container">
+            <label>Interviewer</label>  <span>{{interview.val_interviewer_fn | shorten:interview.val_interviewer_fn:interview.val_interviewer_ln}}</span><br>
+        <label>Interviewee Email</label><span>{{interview.val_interviewee_email}}</span><br>
+        <label>Interviewee Phone</label><span>{{interview.val_interviewee_phone}}</span><br>
+        <label>Address</label><span>{{interview.val_address}}</span><br>
+        <label>City</label><span>{{interview.val_city}}</span>
+    </li>
+</ul>    
