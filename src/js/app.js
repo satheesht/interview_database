@@ -22,7 +22,7 @@ app.config(['$routeProvider',function($routeProvider){
 app.directive("interview",function(){
     var directive = {};
     directive.restrict = "E";
-    directive.templateUrl =  'html/interview.html';
+    directive.templateUrl =  'html_files/interview.html';
     return directive;
 });
 
@@ -32,7 +32,7 @@ app.directive("interview",function(){
 app.directive("menu",function(){
     return {
         restrict : "E",
-        templateUrl : 'html/menu.html'
+        templateUrl : 'html_files/menu.html'
     };
 });
 
@@ -43,19 +43,7 @@ app.directive("menu",function(){
 | 1st Controller Talent Acquisition Controller (Page 1)
 */
 app.controller('tq_db_controller', ['$location','$scope','IDGenerator','storage','ta_validate',function($location,$scope,IDGenerator,storage,ta_validate) {
-    $scope.mock = {
-        val_purpose:"Visa",
-        val_city: "London",
-        val_address:"34,East Coast Road",
-        val_interviewer_fn:"Satheesh",
-        val_interviewer_ln:"Thangavel",
-        val_interviewee_fn:"Denis",
-        val_interviewee_ln:"Brik",
-        val_interviewee_email:"tset4@test.com",
-        val_interviewee_phone:"666-666-6666",
-        val_date:"tset6",
-        val_interview_id:""
-    }
+
     $scope.cities = ['','London','Brington','Belfast','Cardiff','Newcastle','Elsewhere'];
     $scope.error_on = false;
     $scope.invalid_phone = false;
